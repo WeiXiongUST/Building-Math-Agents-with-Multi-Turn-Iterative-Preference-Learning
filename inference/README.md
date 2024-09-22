@@ -1,6 +1,6 @@
 ## Inference for MATH Problem with External Python Intepreter 
 
-In this repo, we implement the MATH problem solving with external python tool using the VLLM to accelerate infernece.
+In this repo, we implement the MATH problem solving with external python tool using the VLLM to accelerate infernece. The codebase is largely based on the Tora project.
 
 
 ## 1 Installation instructions
@@ -38,7 +38,7 @@ pip install antlr4-python3-runtime==4.11 # The versions of sympy and antlr4 cann
 
 ## 2 The General Process of Inference
 
-The current codes are implemented specially for Gemma (mainly in terms of the prompt format). Fix this to automatically work for other models later...
+The current codes are implemented specially for Gemma, Mistral, deepseek, and Llama3 (mainly in terms of the prompt format). You should include gemma, mistral, deepseek, or llama in the model name so that the code can specify the prompt format.
 
 
 **Step 1** To start with, we prepare a prompt (problem) into the following Gemma format:

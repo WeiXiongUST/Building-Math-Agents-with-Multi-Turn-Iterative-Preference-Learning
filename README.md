@@ -34,6 +34,10 @@ It is recommended to have three separate environments for **sft**, **inference**
 - [SFT Model: RLHF4MATH/Gemma-7B-it-SFT3epoch](https://huggingface.co/RLHF4MATH/Gemma-7B-it-SFT3epoch)
 - [Aligned Model: RLHF4MATH/Gemma-7B-it-M-DPO](https://huggingface.co/RLHF4MATH/Gemma-7B-it-M-DPO)
 
+## Acknowledgement
+
+The authors would like to thank the great open-source communities, including the Huggingface TRL team, Axolotl team, and Tora project for sharing the models, and codes. 
+
 ## Citation
 
 If you find the content of this repo useful, please consider cite it as follows:
