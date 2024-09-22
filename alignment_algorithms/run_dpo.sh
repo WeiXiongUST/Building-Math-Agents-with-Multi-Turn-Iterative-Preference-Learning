@@ -1,0 +1,18 @@
+accelerate launch --config_file ./training_configs/zero2_pf.yaml run_dpo.py \
+    --model_name_or_path RLHF4MATH/Gemma-7B-it-SFT3epoch \
+    --ref_model RLHF4MATH/Gemma-7B-it-SFT3epoch \
+    --per_device_train_batch_size 1 \
+    --num_train_epochs 1 \
+    --train_dir RLHF4MATH/Gemma-7B-1.1-it-iter1-random-pairs \
+    --eval_dir RLHF4MATH/Gemma-7B-1.1-it-iter1-random-pairs \
+    --learning_rate 2e-7 \
+    --lr_scheduler_type=cosine \
+    --gradient_accumulation_steps 4 \
+    --logging_steps 2 \
+    --eval_steps 10000 \
+    --output_dir=./mdpo_iter1_gemma7b_lr2e7_bz32 \
+    --warmup_ratio 0.1 \
+    --report_to wandb \
+    --bf16 \
+    --save_strategy=steps \
+    --save_steps=50 \

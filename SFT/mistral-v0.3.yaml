@@ -1,0 +1,86 @@
+base_model: ./models/mistral_with_pad
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+
+load_in_8bit: false
+load_in_4bit: false
+strict: false
+
+datasets:
+  - path: RLHF4MATH/SFT_510K
+    conversation: mistral
+    type: sharegpt.load_ultrachat
+    split: "train"
+    train_on_split: "train"
+
+warmup_steps: 50
+val_set_size: 0.0
+output_dir: ./models/mistral_bz64_1e5_pack4096_1200k
+wandb_project: huggingface
+#wandb_entity: sft
+wandb_watch:
+wandb_name: "mistral_bz64_1e5_pack4096_510k"
+#_response_only
+wandb_log_model:
+
+train_on_inputs: false
+
+save_safetensors: true
+#noisy_embedding_alpha: 10.0 # default for sharegpt type
+dataset_prepared_path: ~/data/preference-models/last_run_prepared
+
+
+dataset_processes: 48
+#torch_compile: true
+sequence_len: 4096
+sample_packing: true
+pad_to_sequence_len: true
+
+trust_remote_code: True
+adapter:
+lora_model_dir:
+
+
+
+
+gradient_checkpointing: true
+
+#warmup_ratio: 0.1
+gradient_accumulation_steps: 2
+micro_batch_size: 4
+num_epochs: 3
+optimizer: paged_adamw_32bit
+lr_scheduler: cosine
+learning_rate: 1.e-5
+
+weight_decay: 0.0
+max_grad_norm: 1.0
+
+
+group_by_length: false
+bf16: auto
+fp16: false
+tf32: true
+
+early_stopping_patience:
+local_rank:
+logging_steps: 2
+xformers_attention:
+flash_attention: true
+eval_steps:
+eval_table_size:
+eval_table_max_new_tokens:
+#save_steps: 99999
+save_strategy: "epoch"
+save_total_limit: 3
+debug:
+
+
+ddp: #true
+deepspeed:
+
+fsdp:
+fsdp_config:
+special_tokens:
+
+                      

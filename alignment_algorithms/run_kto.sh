@@ -1,0 +1,18 @@
+accelerate launch --config_file ./training_configs/zero2_pf.yaml run_kto.py \
+    --model_name_or_path RLHF4MATH/Gemma-7B-it-SFT3epoch \
+    --per_device_train_batch_size 1 \
+    --num_train_epochs 1 \
+    --learning_rate 2e-7 \
+    --lr_scheduler_type=cosine \
+    --gradient_accumulation_steps 4 \
+    --logging_steps 2 \
+    --eval_steps 1000 \
+    --output_dir=./mkto_iter1_gemma7b_lr2e7_bz32 \
+    --warmup_ratio 0.1 \
+    --report_to wandb \
+    --bf16 \
+    --logging_first_step \
+    --dataset_name=RLHF4MATH/Gemma-7B-1.1-it-iter1-random-pairs \
+    --save_strategy=steps \
+    --save_steps=50 \
+    --save_only_model=True \                                                   
