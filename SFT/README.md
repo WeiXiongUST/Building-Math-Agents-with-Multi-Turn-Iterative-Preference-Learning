@@ -26,7 +26,7 @@ conda install nvidia/label/cuda-12.2.0::cuda-nvcc
 Now we set up the python environment.
 
 ```shell
-conda create -n pm_dev python=3.10.9
+conda create -n sft python=3.10.9
 conda activate sft
 
 # The test cuda version is 12.1, 12.2. You may need to update the torch version based on your cuda version...
